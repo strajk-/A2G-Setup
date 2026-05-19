@@ -1,7 +1,11 @@
 # A2G-Setup
 Compatibility setup for a variety of Anstoss 2 Gold (A2G) releases.
 
+![Installer Preview](docs/installer_preview.png)
+
 This tool allows you to easily install various releases of Anstoss 2 Gold on modern systems (supporting Windows 7 up to the latest Windows releases). It completely automates the notoriously difficult compatibility process by handling OS version spoofing, 16-bit color mode configuration, and the installation of required legacy codecs and DirectDraw wrappers.
+
+**Built entirely on .NET Framework 4.0**, A2G-Setup runs natively out of the box on Windows 7 and newer. You do not need to download or install any additional runtimes or dependencies to run this setup.
 
 ---
 
