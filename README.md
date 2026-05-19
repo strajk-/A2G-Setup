@@ -35,3 +35,16 @@ To make the installation process seamless, this setup bundles several open-sourc
 
 * **[Indeo Video Codecs](https://github.com/Bladez1992/Indeo-Video-Codecs)**
   The original Intel Indeo binaries. These are copied to the Windows `SysWOW64` directory and registered if they are not already present on the system, allowing the in-game videos to play correctly.
+
+---
+
+## ⚖️ Licensing & Third-Party Notices
+
+A2G-Setup is licensed under the GNU General Public License v3.0. 
+
+However, this installer embeds third-party binaries required for game compatibility. These components are redistributed strictly for preservation and compatibility purposes and are subject to their own respective licenses:
+
+- **WineVDM (otvdm):** Licensed under the GNU LGPL v2.1 / GPL v2 or later.
+- **WineD3D:** Licensed under the GNU Lesser General Public License v2.1.
+- **K-Lite Codec Pack Tools:** Copyright (c) Codec Guide. Distributed as freeware.
+- **Intel Indeo Codecs:** Copyright (c) Intel / Ligos Corporation. Legacy abandonware included for OS compatibility.
