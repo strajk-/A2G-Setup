@@ -1,0 +1,48 @@
+﻿10000	Anstoss 2 Gold - Kompatibilitäts-Setup
+10001	Sprache ändern
+10002	Weiter
+10003	Schliessen
+10004	Zurück
+10005	OK
+10006	Ja
+10007	Nein
+10008	Installieren
+10009	CD-Version
+10010	Anstoss 2 Gold / Back to Games
+10011	Anstoss 2007 - Jubiläums-Edition
+10012	CD-Pfad
+10013	Installationspfad
+10014	K-Lite installieren (Indeo 3.2 Codec Aktivierung)
+10015	WineD3D installieren (DirectDraw und DirectX 7.0 Emulation)
+10016	Optionen
+10017	16-Bit (65'536) Farbtiefe aktivieren
+10018	OTVDM (Emulation von 16-Bit Anwendungen) installieren
+10019	Wählen Sie das Verzeichnis oder Laufwerk mit der setup.exe
+
+20000	Fehler
+20001	Achtung
+20002	Erfolg
+20003	Abgebrochen
+
+30000	Der CD-Pfad '{0}' wurde nicht gefunden.
+30001	Die Datei '{0}' konnte auf der CD nicht gefunden werden. Bitte überprüfen Sie den CD-Pfad.
+30002	Das OTVDM Archiv ist fehlerhaft (kein Hauptordner gefunden).
+30003	Fehler beim Verschieben des OTVDM-Ordners:\n{0}
+30004	OTVDM Shortcut '{0}' nicht gefunden. Installation abgebrochen.
+30005	Das OTVDM Archiv konnte nicht entpackt werden.
+30006	Fehler beim Laden der OTVDM-Ressource aus der Anwendung.
+30007	Installation fehlgeschlagen.
+30008	Ihre Windows-Version ist älter als Windows 8.\n\nJedes Mal, wenn Sie spielen möchten, müssen Sie die Farbtiefe in den Anzeigeeinstellungen Ihres Betriebssystems manuell auf 16-Bit (High Color, 65536 Farben) umstellen.
+30009	Fehler beim Extrahieren der K-Lite Dateien. Dieser Schritt wird übersprungen.
+30010	WineD3D konnte nicht entpackt werden. Möglicherweise fehlen Berechtigungen im Installationspfad.
+30011	Unerwarteter Fehler:\n{0}
+30012	Die Installation und Konfiguration wurde erfolgreich abgeschlossen!
+30013	Die Installation läuft noch. Wenn Sie jetzt abbrechen, wird dieses Setup-Programm geschlossen, aber bereits gestartete Installationsprozesse im Hintergrund laufen weiter, bis sie abgeschlossen sind. Möchten Sie wirklich beenden?
+30014	Die Installation wurde vom Benutzer abgebrochen.
+
+40000	OTVDM wird installiert
+40001	Anstoss 2 wird installiert
+40002	Benutzerrechte werden konfiguriert
+40003	16-bit (65536) Farben werden konfiguriert
+40004	K-Lite wird installiert und Indeo 3.2 aktiviert
+40005	WineD3D wird installiert

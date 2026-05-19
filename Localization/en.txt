@@ -1,0 +1,48 @@
+﻿10000	On the Ball 2 Gold - Compatibility setup
+10001	Change language
+10002	Next
+10003	Close
+10004	Back
+10005	OK
+10006	Yes
+10007	No
+10008	Install
+10009	CD Version
+10010	On the Ball 2 Gold / Back to Games
+10011	On the Ball 2007 - Anniversary Edition
+10012	CD Path
+10013	Installation path
+10014	Install K-Lite (Indeo 3.2 Codec activation)
+10015	Install WineD3D (DirectDraw and DirectX 7.0 emulation)
+10016	Options
+10017	Enable 16-bit (65'536) color depth
+10018	Install OTVDM (Emulation for 16-bit applications)
+10019	Select the directory or drive containing the setup.exe
+
+20000	Error
+20001	Warning
+20002	Success
+20003	Canceled
+
+30000	The CD path '{0}' was not found.
+30001	The file '{0}' could not be found on the CD. Please check the CD path.
+30002	The OTVDM archive is invalid (no main folder found).
+30003	Error moving the OTVDM folder:\n{0}
+30004	OTVDM shortcut '{0}' not found. Installation aborted.
+30005	The OTVDM archive could not be extracted.
+30006	Error loading the OTVDM resource from the application.
+30007	Installation failed.
+30008	Your Windows version is older than Windows 8.\n\nWhenever you want to play, you must manually set the color depth to 16-bit (High Color, 65536 colors) in your operating system display settings.
+30009	Error extracting the K-Lite files. This step will be skipped.
+30010	WineD3D could not be extracted. There may be missing permissions in the installation path.
+30011	Unexpected error:\n{0}
+30012	The installation and configuration were successfully completed!
+30013	The installation is still running. If you exit now, this setup application will close, but any background installation processes already started will continue running until they finish. Are you sure you want to exit?
+30014	The installation was cancelled by the user.
+
+40000	Installing OTVDM
+40001	Installing Anstoss 2
+40002	Configuring user permissions
+40003	Configuring 16-bit (65536) colors
+40004	Installing K-Lite and activating Indeo 3.2
+40005	Installing WineD3D
