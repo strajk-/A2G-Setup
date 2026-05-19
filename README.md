@@ -40,7 +40,7 @@ To make the installation process seamless, this setup bundles several open-sourc
 
 ## ⚖️ Licensing & Third-Party Notices
 
-A2G-Setup is licensed under the GNU General Public License v3.0. 
+The original source code of A2G-Setup is licensed under the GNU General Public License v3.0. 
 
 However, this installer embeds third-party binaries required for game compatibility. These components are redistributed strictly for preservation and compatibility purposes and are subject to their own respective licenses:
 
