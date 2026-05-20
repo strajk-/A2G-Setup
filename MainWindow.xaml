@@ -78,7 +78,7 @@
                     <ColumnDefinition Width="300"/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="0" Content="{localizer:LocalizedText Nr=10009}"/>
-                <ComboBox Name="cbCDVersion" Grid.Column="2" SelectedIndex="0" VerticalContentAlignment="Center" IsEnabled="{Binding IsInstalling, Converter={StaticResource BoolInverterConverter}}">
+                <ComboBox Name="cbCDVersion" Grid.Column="2" SelectedIndex="0" VerticalContentAlignment="Center" IsEnabled="{Binding IsInstalling, Converter={StaticResource BoolInverterConverter}}" SelectionChanged="cbCDVersion_SelectionChanged">
                     <ComboBoxItem Content="{localizer:LocalizedText Nr=10010}" Tag="{x:Static local:Version.A2G}"/>
                     <ComboBoxItem Content="{localizer:LocalizedText Nr=10011}" Tag="{x:Static local:Version.A2007}"/>
                 </ComboBox>
@@ -94,6 +94,18 @@
                 <Label Grid.Column="0" Content="{localizer:LocalizedText Nr=10012}"/>
                 <TextBox Grid.Column="2" Text="{Binding CDPath}" VerticalContentAlignment="Center" IsReadOnly="True" IsEnabled="{Binding IsInstalling, Converter={StaticResource BoolInverterConverter}}"/>
                 <Button Grid.Column="4" Content="..." Click="btSelectCDPath_Click" Cursor="Hand" IsEnabled="{Binding IsInstalling, Converter={StaticResource BoolInverterConverter}}"/>
+            </Grid>
+            <Grid Margin="0,5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="Description"/>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="30"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Content="{localizer:LocalizedText Nr=10020}"/>
+                <TextBox Grid.Column="2" Text="{Binding InstallPath}" VerticalContentAlignment="Center" IsReadOnly="True" IsEnabled="{Binding IsInstalling, Converter={StaticResource BoolInverterConverter}}"/>
+                <Button Grid.Column="4" Content="..." Click="btSelectInstallPath_Click" Cursor="Hand" IsEnabled="{Binding IsInstalling, Converter={StaticResource BoolInverterConverter}}"/>
             </Grid>
             <GroupBox Header="{localizer:LocalizedText Nr=10016}" Margin="0,5,0,0" Width="405" HorizontalAlignment="Left">
                 <StackPanel  Orientation="Vertical" Margin="5" IsEnabled="{Binding IsInstalling, Converter={StaticResource BoolInverterConverter}}">

@@ -23,6 +23,13 @@ namespace A2G_Setup
             set => NotifyPropertyChanged(ref _CDPath, value);
         }
 
+        private string _InstallPath = string.Empty;
+        public string InstallPath
+        {
+            get => _InstallPath;
+            set => NotifyPropertyChanged(ref _InstallPath, value);
+        }
+
         private bool _IsInstalling = false;
         public bool IsInstalling
         {
@@ -65,6 +72,21 @@ namespace A2G_Setup
             this.Close();
         }
 
+        private void SetOriginalInstallPath()
+        {
+            Version? selectedVersion = (cbCDVersion.SelectedItem as ComboBoxItem).Tag as Version?;
+            switch (selectedVersion) {
+                case Version.A2G: {
+                        InstallPath = @"C:\Program Files (x86)\ASCARON\ANSTOSS 2";
+                    }
+                    break;
+                case Version.A2007: {
+                        InstallPath = @"C:\Program Files (x86)\ASCARON Entertainment\ANSTOSS 2 Gold";
+                    }
+                    break;
+            }
+        }
+
         private CancellationTokenSource _cancellationTokenSource;
         private void btInstall_Click(object sender, RoutedEventArgs e)
         {
@@ -83,19 +105,42 @@ namespace A2G_Setup
             Version? selectedVersion = (cbCDVersion.SelectedItem as ComboBoxItem).Tag as Version?;
 
             string cdPath = string.Empty;
-            string installPath = string.Empty;
             string installParameters = string.Empty;
             switch (selectedVersion) {
-                case Version.A2G: {
+                case Version.A2G: { // IS3 - 16 bit
                         cdPath = CDPath;
-                        installPath = @"C:\Program Files (x86)\ASCARON\ANSTOSS 2";
                         installParameters = "/s";
+                        string issFile = Path.Combine(CDPath, "setup.iss");
+                        if (File.Exists(issFile)) {
+                            string tmpissFile = Path.Combine(tempDir, "setup.iss");
+                            File.Copy(issFile, tmpissFile, true);
+                            File.SetAttributes(tmpissFile, FileAttributes.Normal); // remove Read-Only flags
+
+                            string issContent = File.ReadAllText(tmpissFile);
+
+                            // Update szPath under [AskDestPath-0]
+                            issContent = System.Text.RegularExpressions.Regex.Replace(
+                                issContent,
+                                @"(?<=szPath=).*",
+                                InstallPath
+                            );
+
+                            // Update szDir under [SdSetupType-0]
+                            issContent = System.Text.RegularExpressions.Regex.Replace(
+                                issContent,
+                                @"(?<=szDir=).*",
+                                InstallPath
+                            );
+
+                            File.WriteAllText(tmpissFile, issContent);
+
+                            installParameters += $" /f1\"{tmpissFile}\"";
+                        }
                     }
                     break;
-                case Version.A2007: {
+                case Version.A2007: { // Inno Setup
                         cdPath = Path.Combine(CDPath, "ANSTOSS_2_GOLD");
-                        installPath = @"C:\Program Files (x86)\ASCARON Entertainment\ANSTOSS 2 Gold";
-                        installParameters = "/VERYSILENT /SUPPRESSMSGBOXES";
+                        installParameters = $"/VERYSILENT /SUPPRESSMSGBOXES /DIR=\"{InstallPath}\"";
                     }
                     break;
             }
@@ -192,9 +237,9 @@ namespace A2G_Setup
 
                     RunProcess(cdSetupPath, installParameters, cdPath);
 
-                    string a2exePath = Path.Combine(installPath, "anstoss2.exe");
-                    string verlexePath = Path.Combine(installPath, "verl.exe");
-                    string editorexePath = Path.Combine(installPath, "editor.exe");
+                    string a2exePath = Path.Combine(InstallPath, "anstoss2.exe");
+                    string verlexePath = Path.Combine(InstallPath, "verl.exe");
+                    string editorexePath = Path.Combine(InstallPath, "editor.exe");
                     success = File.Exists(a2exePath);
                     if (!success) {
                         ShowMessageFromTask(LocalizedText.GetText(30007), LocalizedText.GetText(20000), MessageBoxImage.Error);
@@ -203,7 +248,7 @@ namespace A2G_Setup
                         InstallStep = LocalizedText.GetText(40002);
 
                         // Full access for everyone in the install, to prevent virtualization of tools running in it such as WineD3D or others to be added in the future
-                        GrantFullAccessToFolder(installPath);
+                        GrantFullAccessToFolder(InstallPath);
 
                         // Set compatibility flags required by the application
                         if (use16bitColor) {
@@ -249,7 +294,7 @@ namespace A2G_Setup
                         InstallStep = LocalizedText.GetText(40005);
                         string wineZipPath = Path.Combine(tempDir, "WineD3D.zip");
                         if (ExtractResource("A2G_Setup.SetupFiles.WineD3D.WineD3D.zip", wineZipPath)) {
-                            if (!ExtractZipFileStandard(wineZipPath, installPath)) {
+                            if (!ExtractZipFileStandard(wineZipPath, InstallPath)) {
                                 ShowMessageFromTask(LocalizedText.GetText(30010), LocalizedText.GetText(20000), MessageBoxImage.Error);
                             }
                         }
@@ -491,6 +536,30 @@ namespace A2G_Setup
             }
         }
 
+        private void cbCDVersion_SelectionChanged (object sender, SelectionChangedEventArgs e)
+        {
+            // CD Version changed -> Display the original install path normally used by this release
+            SetOriginalInstallPath();
+        }
+
+        private void btSelectInstallPath_Click (object sender, RoutedEventArgs e)
+        {
+            using (var dialog = new System.Windows.Forms.FolderBrowserDialog()) {
+                dialog.Description = LocalizedText.GetText(10021);
+                dialog.ShowNewFolderButton = true;
+
+                // If InstallPath has a value, start the dialog there
+                if (!string.IsNullOrWhiteSpace(InstallPath) && Directory.Exists(InstallPath)) {
+                    dialog.SelectedPath = InstallPath;
+                }
+
+                var result = dialog.ShowDialog();
+                if (result == System.Windows.Forms.DialogResult.OK) {
+                    InstallPath = dialog.SelectedPath;
+                }
+            }
+        }
+
         protected override void OnClosing (CancelEventArgs e)
         {
             if (IsInstalling) {
@@ -509,6 +578,8 @@ namespace A2G_Setup
 
             base.OnClosing(e);
         }
+
+        
     }
 
     public enum Version

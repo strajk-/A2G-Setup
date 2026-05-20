@@ -18,6 +18,8 @@
 10017	16-Bit (65'536) Farbtiefe aktivieren
 10018	OTVDM (Emulation von 16-Bit Anwendungen) installieren
 10019	Wählen Sie das Verzeichnis oder Laufwerk mit der setup.exe
+10020	Installationspfad
+10021	Wählen Sie das Verzeichnis wohin Anstoss 2 Installiert werden soll
 
 20000	Fehler
 20001	Achtung

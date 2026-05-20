@@ -18,6 +18,8 @@
 10017	Enable 16-bit (65'536) color depth
 10018	Install OTVDM (Emulation for 16-bit applications)
 10019	Select the directory or drive containing the setup.exe
+10020	Install Path
+10021	Select the directory where On The Ball 2 should be installed into
 
 20000	Error
 20001	Warning
@@ -41,7 +43,7 @@
 30014	The installation was cancelled by the user.
 
 40000	Installing OTVDM
-40001	Installing Anstoss 2
+40001	Installing On The Ball 2
 40002	Configuring user permissions
 40003	Configuring 16-bit (65536) colors
 40004	Installing K-Lite and activating Indeo 3.2
